@@ -1,0 +1,31 @@
+### CADASTRAR UM PRODUTO
+POST http://127.0.0.1:5000/products
+content-type: application/json
+
+{
+    "name": "produto novo id",
+    "description": "registrando novo produto",
+    "price": 201
+}
+
+### LISTAR TODOS OS PRODUTOS
+GET http://127.0.0.1:5000/products/
+content-type: application/json
+
+### BUSCAR UM PRODUTO POR ID
+GET http://127.0.0.1:5000/products/8
+content-type: application/json
+
+### ATUALIZAR UM PRODUTO
+PUT http://127.0.0.1:5000/products/11
+content-type: application/json
+
+{
+    "name": "produto novo nome",
+    "description": "atualizando produto",
+    "price": 202
+}
+
+### EXCLUIR UM PRODUTO
+DELETE http://127.0.0.1:5000/products/13
+content-type: application/json
