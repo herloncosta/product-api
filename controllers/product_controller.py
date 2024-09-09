@@ -5,11 +5,12 @@ from models.product import add_product, get_products, get_product, update_produc
 def create_product():
     data = request.get_json()
     id = add_product(data)
-    return jsonify({"id": id}), 201
+    return id, 201
 
 
 def read_products():
     products = get_products()
+    print(products)
     if products:
         return jsonify({"products": products}), 200
     else:

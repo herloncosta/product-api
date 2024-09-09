@@ -1,4 +1,5 @@
 import mysql.connector
+from uuid import uuid4
 
 db = mysql.connector.connect(
     host="localhost",
@@ -13,37 +14,30 @@ cursor = db.cursor()
 def execute(query, params: None):
     try:
         cursor.execute(query, params)
-        if query.startswith("INSERT"):
-            db.commit()
-            return cursor.lastrowid
-        elif query.startswith("SELECT"):
-            return cursor.fetchall()
-        else:
-            db.commit()
-            return
-    except mysql.connector.Error as error:
-        print("Error executing query:", error)
-        return False
+        db.commit()
+        return cursor.fetchall() if query.strip().lower().startswith("select") else cursor.lastrowid
+    except Exception as e:
+        db.rollback()
+        return {"error": str(e)}
 
-# cursor.execute(
-#     """
-#     CREATE TABLE IF NOT EXISTS products (
-#         id INT AUTO_INCREMENT PRIMARY KEY,
-#         name VARCHAR(255) NOT NULL,
-#         description TEXT,
-#         price DECIMAL(10, 2) NOT NULL
-#     )
-#     """
-# )
 
-# cursor.execute(
-#     """INSERT INTO products (name, description, price)
-#     VALUES (%s, %s, %s)""", ("Product 3", "Description for Product 3", 10.99)
-# )
-# db.commit()
+cursor.execute("DROP DATABASE IF EXISTS products;")
+cursor.execute("CREATE DATABASE products;")
+cursor.execute("USE products;")
 
-# cursor.execute("SELECT * FROM products.products")
-# result = cursor.fetchall()
+cursor.execute(
+    """
+    CREATE TABLE IF NOT EXISTS products (
+        id CHAR(36) PRIMARY KEY,
+        name VARCHAR(255) NOT NULL,
+        description TEXT,
+        price DECIMAL(10, 2) NOT NULL
+    );
+    """
+)
 
-# for row in result:
-#     print(row)
+cursor.execute(
+    """INSERT INTO products (id, name, description, price)
+    VALUES (%s, %s, %s, %s)""", (str(uuid4()), "Product 3", "Description for Product 3", 10.99)
+)
+db.commit()

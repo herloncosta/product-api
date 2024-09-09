@@ -5,7 +5,7 @@ content-type: application/json
 {
     "name": "produto novo id",
     "description": "registrando novo produto",
-    "price": 201
+    "price": 30
 }
 
 ### LISTAR TODOS OS PRODUTOS

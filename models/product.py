@@ -1,23 +1,32 @@
 from config.database import execute
 from entities.product import Product
+from utils.index import validade_product_data
+from uuid import uuid4
 
 
 def add_product(data):
-    query = "INSERT INTO products (name, description, price) VALUES (%s, %s, %s)"
-    product_id = execute(
-        query, (data["name"], data["description"], data["price"]))
-    return product_id
+    is_valid, error = validade_product_data(data)
+    if error:
+        return {'error': error}
+    query = "INSERT INTO products (id, name, description, price) VALUES (%s, %s, %s, %s)"
+    product_id = str(uuid4())
+    try:
+        product_id = execute(
+            query, (product_id, data["name"], data["description"], data["price"]))
+        return {"success": True, "id": product_id}
+    except Exception as e:
+        print("ERRO AQUI")
+        return {"error": str(e)}
 
 
 def get_products():
     query = "SELECT * FROM products"
-    products = execute(query, params=None)
-
-    result = []
-    for row in products:
-        product = Product(*row)  # unpacking
-        result.append(product.__dict__)
-    return result
+    try:
+        products = execute(query, params=None)
+        print(products)
+        return [Product(*product).__dict__ for product in products]
+    except Exception as e:
+        return {"error": str(e)}
 
 
 def get_product(id):
