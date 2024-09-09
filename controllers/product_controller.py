@@ -10,7 +10,6 @@ def create_product():
 
 def read_products():
     products = get_products()
-    print(products)
     if products:
         return jsonify({"products": products}), 200
     else:
