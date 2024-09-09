@@ -8,6 +8,21 @@ content-type: application/json
     "price": 201
 }
 
+### CADASTRAR UM PRODUTO SEM DADOS
+POST http://127.0.0.1:5000/products
+content-type: application/json
+
+{}
+
+### CADASTRAR UM PRODUTO COM DADOS FALTANDO
+POST http://127.0.0.1:5000/products
+content-type: application/json
+
+{
+    "name": "produto novo id",
+    "description": "registrando novo produto"
+}
+
 ### LISTAR TODOS OS PRODUTOS
 GET http://127.0.0.1:5000/products/
 content-type: application/json
@@ -17,7 +32,7 @@ GET http://127.0.0.1:5000/products/1fa921a4-96c8-4e15-8350-aca611a0bf55
 content-type: application/json
 
 ### ATUALIZAR UM PRODUTO
-PUT http://127.0.0.1:5000/products/1fa921a4-96c8-4e15-8350-aca611a0bf55
+PUT http://127.0.0.1:5000/products/28832b65-446d-41ab-9909-5f5fa94c3ed5
 content-type: application/json
 
 {
@@ -26,6 +41,21 @@ content-type: application/json
     "price": 202
 }
 
+### ATUALIZAR UM PRODUTO SEM DADOS
+PUT http://127.0.0.1:5000/products/28832b65-446d-41ab-9909-5f5fa94c3ed5
+content-type: application/json
+
+{}
+
+### ATUALIZAR UM PRODUTO SEM PREÇO
+PUT http://127.0.0.1:5000/products/28832b65-446d-41ab-9909-5f5fa94c3ed5
+content-type: application/json
+
+{
+    "name": "ATUALIZADO RECENTEMENTE",
+    "description": "atualizando produto"
+}
+
 ### EXCLUIR UM PRODUTO
-DELETE http://127.0.0.1:5000/products/1fa921a4-96c8-4e15-8350-aca611a0bf55
+DELETE http://127.0.0.1:5000/products/28832b65-446d-41ab-9909-5f5fa94c3ed5
 content-type: application/json
