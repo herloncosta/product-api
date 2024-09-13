@@ -64,8 +64,8 @@ def remove_product(id):
         exists = get_product(id)
         if exists:
             delete_product(id)
-            return jsonify({"message": "Product deleted successfully"}), 200
+            return jsonify({"message": "Product deleted successfully."}), 200
         else:
-            return jsonify({"error": "Product not found"}), 404
+            return jsonify({"error": "Product not found."}), 404
     except Exception as e:
         return jsonify({"error": str(e)}), 500
