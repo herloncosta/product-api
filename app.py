@@ -10,10 +10,12 @@ app.register_blueprint(products_router)
 
 CORS(app, resources={r"/*": {"origins": "*"}})
 
+# To-Do: Pendente de implementação do Redis
 limiter = Limiter(
     app=app,
     key_func=get_remote_address,
     default_limits=["200 per day", "50 per hour"]
+    # storage_uri="redis"
 )
 
 if __name__ == '__main__':
