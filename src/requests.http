@@ -3,7 +3,7 @@ GET http://127.0.0.1:5000/products
 content-type: application/json
 
 ### LISTAR UM PRODUTO ESPECÍFICO
-GET http://127.0.0.1:5000/products/fbfb8aec-cb65-43a7-a913-1a308a4de95f
+GET http://127.0.0.1:5000/products/fcf4728c-8aab-45bf-8924-4d761f2836ed
 Content-Type: application/json
 
 ### CADASTRAR UM PRODUTO
@@ -14,4 +14,15 @@ content-type: application/json
     "name": "produto novo id",
     "description": "registrando novo produto",
     "price": 201
+}
+
+### ATUALIZAR UM PRODUTO
+
+PUT http://127.0.0.1:5000/products/fcf4728c-8aab-45bf-8924-4d761f2836ed
+content-type: application/json
+
+{
+    "name": "ATUALIZADO RECENTEMENTE",
+    "description": "atualizando produto",
+    "price": 202
 }

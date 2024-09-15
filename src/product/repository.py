@@ -48,3 +48,19 @@ def create_product(id, name, description, price):
         if conn:
             cursor.close()
             conn.close()
+
+
+def update_product(id, name, description, price):
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute("UPDATE products SET name = %s, description = %s, price = %s WHERE id = %s",
+                       (name, description, price, id))
+        conn.commit()
+    except Exception as err:
+        print("Error updating product", err)
+        return None
+    finally:
+        if conn:
+            cursor.close()
+            conn.close()
