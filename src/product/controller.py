@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from .service import fetch_all_products, add_product, fetch_product, modify_product
+from .service import fetch_all_products, add_product, fetch_product, modify_product, delete_product
 from uuid import uuid4
 
 product_bp = Blueprint("product", __name__)
@@ -49,5 +49,16 @@ def update_product(product_id):
             return jsonify({'message': 'Product updated successfully'}), 200
         else:
             return jsonify({'error': 'No changes provided'}), 400
+    else:
+        return jsonify({'error': 'Product not found'}), 404
+
+
+@product_bp.route("/<product_id>", methods=["DELETE"])
+def remove_product(product_id):
+    product = fetch_product(product_id)
+
+    if product:
+        delete_product(product_id)
+        return jsonify({'message': 'Product deleted successfully'}), 200
     else:
         return jsonify({'error': 'Product not found'}), 404

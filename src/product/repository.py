@@ -8,7 +8,10 @@ def get_all_products():
         cursor = conn.cursor(dictionary=True)
         cursor.execute("SELECT * FROM products")
         rows = cursor.fetchall()
-        return rows
+        if rows:
+            return rows
+        else:
+            return []
     except Exception as err:
         print("Error fetching products", err)
         return None
@@ -59,6 +62,21 @@ def update_product(id, name, description, price):
         conn.commit()
     except Exception as err:
         print("Error updating product", err)
+        return None
+    finally:
+        if conn:
+            cursor.close()
+            conn.close()
+
+
+def remove_product(id):
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute("DELETE FROM products WHERE id = %s", (id,))
+        conn.commit()
+    except Exception as err:
+        print("Error deleting product", err)
         return None
     finally:
         if conn:

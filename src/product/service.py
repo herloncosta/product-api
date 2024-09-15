@@ -1,4 +1,4 @@
-from .repository import get_all_products, create_product, get_product, update_product
+from .repository import get_all_products, create_product, get_product, update_product, remove_product
 
 
 def fetch_all_products():
@@ -18,4 +18,9 @@ def fetch_product(id):
 
 def modify_product(product_id, name=None, description=None, price=None):
     update_product(product_id, name, description, price)
+    return
+
+
+def delete_product(product_id):
+    remove_product(product_id)
     return

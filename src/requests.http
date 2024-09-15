@@ -1,7 +1,3 @@
-### LISTAR TODOS OS PRODUTOS
-GET http://127.0.0.1:5000/products
-content-type: application/json
-
 ### LISTAR UM PRODUTO ESPECÍFICO
 GET http://127.0.0.1:5000/products/fcf4728c-8aab-45bf-8924-4d761f2836ed
 Content-Type: application/json
@@ -11,13 +7,12 @@ POST http://127.0.0.1:5000/products
 content-type: application/json
 
 {
-    "name": "produto novo id",
-    "description": "registrando novo produto",
-    "price": 201
+    "name": "Camisa Preta",
+    "description": "Camisa de algodão, com gola V",
+    "price": 70
 }
 
 ### ATUALIZAR UM PRODUTO
-
 PUT http://127.0.0.1:5000/products/fcf4728c-8aab-45bf-8924-4d761f2836ed
 content-type: application/json
 
@@ -26,3 +21,11 @@ content-type: application/json
     "description": "atualizando produto",
     "price": 202
 }
+
+### REMOVER UM PRODUTO ESPECÍFICO
+DELETE http://127.0.0.1:5000/products/6e06295a-d2b3-4400-82ad-3e76bfe62b07
+Content-Type: application/json
+
+### LISTAR TODOS OS PRODUTOS
+GET http://127.0.0.1:5000/products
+content-type: application/json
