@@ -1,3 +1,13 @@
 ### LISTAR TODOS OS PRODUTOS
 GET http://127.0.0.1:5000/products
 content-type: application/json
+
+### CADASTRAR UM PRODUTO
+POST http://127.0.0.1:5000/products
+content-type: application/json
+
+{
+    "name": "produto novo id",
+    "description": "registrando novo produto",
+    "price": 201
+}
