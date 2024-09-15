@@ -23,7 +23,7 @@ content-type: application/json
 }
 
 ### REMOVER UM PRODUTO ESPECÍFICO
-DELETE http://127.0.0.1:5000/products/6e06295a-d2b3-4400-82ad-3e76bfe62b07
+DELETE http://127.0.0.1:5000/products/c2961fbf-0f45-4fab-a47f-9afce0dacf2d
 Content-Type: application/json
 
 ### LISTAR TODOS OS PRODUTOS

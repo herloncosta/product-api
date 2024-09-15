@@ -8,10 +8,7 @@ def get_all_products():
         cursor = conn.cursor(dictionary=True)
         cursor.execute("SELECT * FROM products")
         rows = cursor.fetchall()
-        if rows:
-            return rows
-        else:
-            return []
+        return rows
     except Exception as err:
         print("Error fetching products", err)
         return None

@@ -10,6 +10,7 @@ def get_products():
     products = fetch_all_products()
     if products:
         return jsonify(products), 200
+    return jsonify([]), 200
 
 
 @product_bp.route("/<product_id>", methods=["GET"])
