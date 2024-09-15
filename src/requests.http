@@ -2,6 +2,10 @@
 GET http://127.0.0.1:5000/products
 content-type: application/json
 
+### LISTAR UM PRODUTO ESPECÍFICO
+GET http://127.0.0.1:5000/products/fbfb8aec-cb65-43a7-a913-1a308a4de95f
+Content-Type: application/json
+
 ### CADASTRAR UM PRODUTO
 POST http://127.0.0.1:5000/products
 content-type: application/json

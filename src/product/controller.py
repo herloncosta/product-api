@@ -1,6 +1,5 @@
 from flask import Blueprint, request, jsonify
-from config.database import get_db_connection
-from .service import fetch_all_products, add_product
+from .service import fetch_all_products, add_product, fetch_product
 from uuid import uuid4
 
 product_bp = Blueprint("product", __name__)
@@ -11,6 +10,15 @@ def get_products():
     products = fetch_all_products()
     if products:
         return jsonify(products), 200
+
+
+@product_bp.route("/<product_id>", methods=["GET"])
+def get_product(product_id):
+    product = fetch_product(product_id)
+    if product:
+        return jsonify(product.to_dict()), 200
+    else:
+        return jsonify({'error': 'Product not found'}), 404
 
 
 @product_bp.route("/", methods=["POST"])
