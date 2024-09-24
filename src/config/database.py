@@ -43,3 +43,45 @@ def criar_tabela_users():
     finally:
         if db:
             close_db_connection(db)
+
+def criar_tabela_products():
+    db = None
+    try:
+        db = get_db_connection()
+        if not db:
+            raise Exception("Falha ao conectar ao banco de dados")
+        
+        cursor = db.connection.cursor()
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS products (
+                id VARCHAR(36) PRIMARY KEY,
+                name VARCHAR(100) NOT NULL,
+                description TEXT,
+                price DECIMAL(10, 2) NOT NULL
+            )
+        """)
+        db.connection.commit()
+        print("Tabela 'products' criada com sucesso!")
+    except Exception as err:
+        print(f"Erro ao criar tabela 'products': {err}")
+    finally:
+        if db:
+            close_db_connection(db)
+
+def rollback_database():
+    db = None
+    try:
+        db = get_db_connection()
+        if not db:
+            raise Exception("Falha ao conectar ao banco de dados")
+
+        cursor = db.connection.cursor()
+        cursor.execute("DROP DATABASE IF EXISTS products")
+        cursor.execute("DROP DATABASE IF EXISTS users")
+        db.connection.commit()
+        print("Banco de dados 'users' e 'products' deletado com sucesso!")
+    except Exception as err:
+        print(f"Erro ao deletar banco de dados 'users' e 'products': {err}")
+    finally:
+        if db:
+            close_db_connection(db)
