@@ -1,5 +1,5 @@
 ### LISTAR UM PRODUTO ESPECÍFICO
-GET http://127.0.0.1:5000/products/fcf4728c-8aab-45bf-8924-4d761f2836ed
+GET http://127.0.0.1:5000/products/7f8b030c-e1b9-447c-a502-3bdebd825618
 Content-Type: application/json
 
 ### CADASTRAR UM PRODUTO
@@ -13,7 +13,7 @@ content-type: application/json
 }
 
 ### ATUALIZAR UM PRODUTO
-PUT http://127.0.0.1:5000/products/fcf4728c-8aab-45bf-8924-4d761f2836ed
+PUT http://127.0.0.1:5000/products/7f8b030c-e1b9-447c-a502-3bdebd825618
 content-type: application/json
 
 {
@@ -23,7 +23,7 @@ content-type: application/json
 }
 
 ### REMOVER UM PRODUTO ESPECÍFICO
-DELETE http://127.0.0.1:5000/products/c2961fbf-0f45-4fab-a47f-9afce0dacf2d
+DELETE http://127.0.0.1:5000/products/faksdfasdfasdf
 Content-Type: application/json
 
 ### LISTAR TODOS OS PRODUTOS

@@ -44,6 +44,31 @@ class MySQLDriver():
         self.connection = None
 
     def connect(self):
+        """
+        Estabelece uma conexão com o banco de dados MySQL.
+
+        Este método tenta criar uma conexão com o banco de dados MySQL usando
+        as credenciais e informações fornecidas durante a inicialização da classe.
+
+        Retorna:
+        --------
+        bool
+            True se a conexão for estabelecida com sucesso, False caso contrário.
+
+        Comportamento:
+        -------------
+        - Tenta estabelecer uma conexão usando mysql.connector.connect().
+        - Se bem-sucedido, armazena a conexão no atributo 'connection' da instância.
+        - Imprime uma mensagem de sucesso se a conexão for estabelecida.
+        - Em caso de erro, captura e trata duas exceções:
+          1. mysql.connector.Error: para erros específicos do MySQL.
+          2. Exception: para quaisquer outros erros inesperados.
+
+        Notas:
+        ------
+        - Em caso de erro, uma mensagem detalhada é impressa no console.
+        - É importante chamar o método 'disconnect()' após o uso para fechar a conexão.
+        """
         try:
             self.connection = mysql.connector.connect(
                 host=self.host,
@@ -52,10 +77,13 @@ class MySQLDriver():
                 database=self.database
             )
             if self.connection.is_connected():
-                print("Connection to MySQL DB successful.")
+                print("Conexão com o banco de dados MySQL bem-sucedida.")
             return True
         except Error as e:
-            print(f"The error '{e}' occurred.")
+            print(f"Ocorreu um erro ao conectar: '{e}'")
+            return False
+        except Exception as e:
+            print(f"Ocorreu um erro inesperado: '{e}'")
             return False
 
     def disconnect(self):
