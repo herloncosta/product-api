@@ -1,26 +1,26 @@
-from .repository import get_all_products, create_product, get_product, update_product, remove_product
+from .repository import get_all_users, create_user, get_user, update_user, remove_user
 
 
-def fetch_all_products():
-    products = get_all_products()
-    return products
+def fetch_all_users():
+    users = get_all_users()
+    return users
 
 
-def add_product(id, name, description, price):
-    create_product(id, name, description, price)
+def add_user(id, name, email, password, role):
+    create_user(id, name, email, password, role)
     return
 
 
-def fetch_product(id):
-    product = get_product(id)
-    return product
+def fetch_user(id):
+    user = get_user(id)
+    return user
 
 
-def modify_product(product_id, name=None, description=None, price=None):
-    update_product(product_id, name, description, price)
+def modify_user(user_id, name=None, email=None, password=None, role=None):
+    update_user(user_id, name, email, password, role)
     return
 
 
-def delete_product(product_id):
-    remove_product(product_id)
+def delete_user(user_id):
+    remove_user(user_id)
     return

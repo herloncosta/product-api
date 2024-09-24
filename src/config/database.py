@@ -18,3 +18,28 @@ def get_db_connection():
 def close_db_connection(db):
     if db:
         db.disconnect()
+        
+def criar_tabela_users():
+    db = None
+    try:
+        db = get_db_connection()
+        if not db:
+            raise Exception("Falha ao conectar ao banco de dados")
+        
+        cursor = db.connection.cursor()
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS users (
+                id VARCHAR(36) PRIMARY KEY,
+                name VARCHAR(100) NOT NULL,
+                email VARCHAR(100) UNIQUE NOT NULL,
+                password VARCHAR(255) NOT NULL,
+                role VARCHAR(50)
+            )
+        """)
+        db.connection.commit()
+        print("Tabela 'users' criada com sucesso!")
+    except Exception as err:
+        print(f"Erro ao criar tabela 'users': {err}")
+    finally:
+        if db:
+            close_db_connection(db)

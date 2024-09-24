@@ -29,3 +29,40 @@ Content-Type: application/json
 ### LISTAR TODOS OS PRODUTOS
 GET http://127.0.0.1:5000/products
 content-type: application/json
+
+
+### LISTAR TODOS OS USUÁRIOS
+GET http://127.0.0.1:5000/users
+content-type: application/json
+
+
+### LISTAR UM USUÁRIO ESPECÍFICO
+GET http://127.0.0.1:5000/users/8f548b38-d9d8-4a7b-ba02-fb03ae97b2ca
+content-type: application/json
+
+
+### CADASTRAR UM USUÁRIO
+POST http://127.0.0.1:5000/users
+content-type: application/json
+
+{
+    "name": "Maria Eduarda",
+    "email": "maria.duda@example.com",
+    "password": "senha123",
+    "role": "admin"
+}
+
+### ATUALIZAR UM USUÁRIO
+PUT http://127.0.0.1:5000/users/cd133a5f-fa8c-4b7b-8835-d53da91d8d42
+content-type: application/json
+
+{
+    "name": "Maria Eduarda",
+    "email": "maria.duda@example.com",
+    "password": "senha123",
+    "role": "admin"
+}
+
+### REMOVER UM USUÁRIO ESPECÍFICO
+DELETE http://127.0.0.1:5000/users/cd133a5f-fa8c-4b7b-8835-d53da91d8d42
+Content-Type: application/json

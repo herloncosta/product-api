@@ -1,4 +1,4 @@
-class Product:
+class User:
     def __init__(self, id, name, email, password, role):
         self.id = id
         self.name = name
